@@ -1,8 +1,8 @@
-FROM golang:1.17-alpine as builder
+FROM golang:1.18.3-alpine as builder
 
 RUN apk add --no-cache git
 RUN go install github.com/golang/mock/mockgen@v1.6.0
 
-FROM golang:1.17-alpine
+FROM golang:1.18.3-alpine
 WORKDIR /bin
 COPY --from=builder /go/bin/mockgen mockgen
